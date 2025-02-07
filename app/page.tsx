@@ -1,9 +1,11 @@
 "use client"
 import React from "react";
-import { Card, CardHeader, CardBody, Button } from "@heroui/react";
+import { Card, CardHeader, CardBody, Button, Spacer } from "@heroui/react";
 import { ChevronDown, Leaf, Mountain, Users } from "lucide-react";
+import { useRouter } from "next/dist/client/components/navigation";
 
 export default function Home() {
+  const  router  = useRouter()
   return (
     <div className="min-h-screen bg-background dark:bg-background">
       {/* Hero Section */}
@@ -31,6 +33,16 @@ export default function Home() {
             endContent={<ChevronDown className="group-hover:translate-y-1 transition-transform duration-300" />}
           >
             Explore Our Services
+          </Button>
+          <Spacer/>
+          <Button 
+            className="group flex items-center gap-2"
+            color="primary"
+            variant="solid"
+            startContent={<ChevronDown className="group-hover:translate-y-1 transition-transform duration-300" />}
+            onClick={() => router.push('/admin-login')}
+          >
+            Admin
           </Button>
         </div>
       </div>

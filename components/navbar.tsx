@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -15,8 +16,10 @@ import clsx from "clsx";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Leaf } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { useRouter } from "next/dist/client/components/navigation";
 
 export const Navbar = () => {
+  const  router  = useRouter()
   return (
     <HeroUINavbar 
       maxWidth="xl" 
@@ -26,8 +29,18 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-2" href="/">
-            <Leaf className="text-primary h-6 w-6" />
+            <Leaf className="text-primary h-6 w-6" onClick={() => router.push('/admin-login')}/>
+              
             <p className="font-bold text-inherit text-xl">NuLeaf</p>
+
+            <Button 
+            className="group flex items-center gap-2"
+            color="primary"
+            variant="solid"
+            onPress={() => router.push('/admin-login')}
+          >
+            Admin
+          </Button>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
